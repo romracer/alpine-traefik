@@ -68,11 +68,11 @@ storage = \"${SERVICE_HOME}/acme/acme.json\"
 onDemand = ${TRAEFIK_ACME_ONDEMAND}
 OnHostRule = ${TRAEFIK_ACME_ONHOSTRULE}
 entryPoint = \"https\""
-fi
 
-if [ "X${TRAEFIK_ACME_DNSPROVIDER}" != "X" ]; then
-    TRAEFIK_ACME_CFG=$TRAEFIK_ACME_CFG"
+    if [ "X${TRAEFIK_ACME_DNSPROVIDER}" != "X" ]; then
+        TRAEFIK_ACME_CFG=$TRAEFIK_ACME_CFG"
 dnsProvider = \"${TRAEFIK_ACME_DNSPROVIDER}\""
+    fi
 fi
 
 cat << EOF > ${SERVICE_HOME}/etc/traefik.toml
