@@ -24,6 +24,7 @@ RUN mkdir -p ${SERVICE_HOME}/bin ${SERVICE_HOME}/etc ${SERVICE_HOME}/log ${SERVI
     adduser -g "${SERVICE_NAME} user" -D -h ${SERVICE_HOME} -G ${SERVICE_GROUP} -s /sbin/nologin -u ${SERVICE_UID} ${SERVICE_USER} 
 ADD root /
 RUN chmod +x ${SERVICE_HOME}/bin/*.sh && \
+    chmod +x ${SERVICE_HOME}/bin/traefik && \
     chown -R ${SERVICE_USER}:${SERVICE_GROUP} ${SERVICE_HOME} /opt/monit && \
     setcap 'cap_net_bind_service=+ep' ${SERVICE_HOME}/bin/traefik
 
